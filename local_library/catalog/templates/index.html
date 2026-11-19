@@ -19,4 +19,7 @@
     <li><strong>Fountainhead books:</strong> {{ num_fountainhead_books }}</li>
   </ul>
 
+  <p>
+    You have visited this page {{ num_visits }}{% if num_visits == 1 %} time{% else %} times{% endif %}.
+  </p>
 {% endblock %}

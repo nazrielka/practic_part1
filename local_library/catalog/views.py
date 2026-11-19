@@ -10,7 +10,10 @@ def index (request):
     num_classic_genres = Genre.objects.filter(name__icontains='Классика').count()
     num_fountainhead_books = Book.objects.filter(title__icontains='Источник').count()
 
-    return render(request, 'index.html', context={'num_books': num_books, 'num_instances': num_instances, 'num_instances_available': num_instances_available, 'num_authors': num_authors, 'num_classic_genres': num_classic_genres, 'num_fountainhead_books': num_fountainhead_books})
+    num_visits=request.session.get('num_visits',0)
+    request.session['num_visits']=num_visits+1
+
+    return render(request, 'index.html', context={'num_books': num_books, 'num_instances': num_instances, 'num_instances_available': num_instances_available, 'num_authors': num_authors, 'num_classic_genres': num_classic_genres, 'num_fountainhead_books': num_fountainhead_books, 'num_visits':num_visits})
 
 class BookListView(generic.ListView):
     model = Book
