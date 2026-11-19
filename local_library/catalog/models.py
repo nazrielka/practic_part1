@@ -15,6 +15,9 @@ class Book(models.Model):
     genre = models.ManyToManyField('Genre', help_text="Выберите жанр для книги.")
     language = models.ForeignKey('Language', on_delete=models.SET_NULL, null=True)
 
+    class Meta:
+        ordering = ['title','author']
+
     def __str__(self):
         return self.title
     def get_absolute_url(self):
@@ -53,6 +56,9 @@ class Author(models.Model):
         return reverse('author-detail', args=[str(self.id)])
     def __str__(self):
         return '%s %s' % (self.last_name, self.first_name)
+
+    class Meta:
+        ordering = ['last_name',]
 
 class Language(models.Model):
     name = models.CharField(max_length=200, help_text="Укажите язык книги (например: русский).")
