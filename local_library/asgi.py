@@ -1,5 +1,5 @@
 """
-ASGI config for local_library project.
+ASGI config for vvvv project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
